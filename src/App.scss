@@ -1,0 +1,14 @@
+.app-container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background-color: #090312;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}

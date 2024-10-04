@@ -1,0 +1,85 @@
+[data-component='Button'] {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1rem;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  border: none;
+  background-color: #ececf1;
+  color: #101010;
+  border-radius: 1000px;
+  padding: 12px 24px;
+  transition: 0.3s ease-in-out;
+  outline: none;
+
+  &.button-style-action {
+    background-color: #ffffff;
+    color: #000000;
+    box-shadow: 0 0 20px rgb(255 255 255 / 59%);
+    &:hover:not([disabled]) {
+      background-color: #f8f82b;
+      box-shadow: 0 0 25px rgba(255, 238, 0, 0.59);
+      padding: 14px 30px;
+    }
+  }
+
+  &.button-style-alert {
+    background-color: #f00;
+    color: #ececf1;
+    &:hover:not([disabled]) {
+      background-color: #f00;
+    }
+  }
+
+  &.button-style-flush {
+    background-color: rgba(255, 255, 255, 0);
+  }
+
+  &[disabled] {
+    color: #999;
+  }
+
+  &:not([disabled]) {
+    cursor: pointer;
+  }
+
+  &:hover:not([disabled]) {
+    background-color: #d8d8d8;
+  }
+
+  &:active:not([disabled]) {
+    transform: translateY(1px);
+  }
+
+  .icon {
+    display: flex;
+    &.icon-start {
+      margin-left: -8px;
+    }
+    &.icon-end {
+      margin-right: -8px;
+    }
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &.icon-red .icon {
+    color: #cc0000;
+  }
+  &.icon-green .icon {
+    color: #009900;
+  }
+  &.icon-grey .icon {
+    color: #909090;
+  }
+  &.icon-fill {
+    svg {
+      fill: currentColor;
+    }
+  }
+}
