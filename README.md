@@ -4,7 +4,7 @@ This project was created from the OpenAI official example for the Realtime API: 
 
 Full video to see the app in action:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Z3akMnGmXxU?si=OFE5AzGeAew6SI3J" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<a href="https://youtu.be/Z3akMnGmXxU" target="_blank"><image src="./thumbnail.jpg" width="400"></image></a>
 
 ## Start the app
 
