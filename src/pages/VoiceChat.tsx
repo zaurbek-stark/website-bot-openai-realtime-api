@@ -32,14 +32,14 @@ INSTRUCTIONS:
 - You will receive website data about a product.
 - You are an artificial intelligence agent responsible to qualify leads and see if they are good fit for the product.
 - Please make sure to respond with a helpful voice via audio
-- Your response should be concise and to the point, keep it short.
+- Your response should be concise and to the point, keep it short, less than 200 characters max.
 - You can ask the user questions
 - Be open to exploration and conversation
 
 ------
 PERSONALITY:
 - Be upbeat and genuine
-- Try speaking quickly as if excited
+- Speak FAST as if excited
 
 ------
 WEBSITE DATA:
@@ -232,7 +232,7 @@ ${scrapedContent}
               serverCanvas,
               serverCtx,
               result.values,
-              '#009900',
+              '#fff700',
               10,
               0,
               8
@@ -254,15 +254,12 @@ ${scrapedContent}
    * Set all of our instructions, tools, events and more
    */
   useEffect(() => {
-    // Get refs
     const wavStreamPlayer = wavStreamPlayerRef.current;
     const client = clientRef.current;
 
-    // Set instructions
     client.updateSession({ instructions: instructions });
-    // Set transcription, otherwise we don't get user transcriptions back
     client.updateSession({ input_audio_transcription: { model: 'whisper-1' } });
-    client.updateSession({ voice: 'echo' });
+    client.updateSession({ voice: 'alloy' });
 
     client.on('error', (event: any) => console.error(event));
     client.on('conversation.interrupted', async () => {
@@ -319,6 +316,16 @@ ${scrapedContent}
       </div>
       <div className="content-main">
         <div className="content-logs">
+          <div className="content-block events">
+            <div className="visualization">
+              <div className="visualization-entry client">
+                <canvas ref={clientCanvasRef} />
+              </div>
+              <div className="visualization-entry server">
+                <canvas ref={serverCanvasRef} />
+              </div>
+            </div>
+          </div>
           {items.length > 0 && (
             <div className="content-block conversation">
               <div className="content-block-body" data-conversation-content>
@@ -344,17 +351,6 @@ ${scrapedContent}
                         </div>
                       </div>
                       <div className={`speaker-content`}>
-                        {/* tool response */}
-                        {conversationItem.type === 'function_call_output' && (
-                          <div>{conversationItem.formatted.output}</div>
-                        )}
-                        {/* tool call */}
-                        {!!conversationItem.formatted.tool && (
-                          <div>
-                            {conversationItem.formatted.tool.name}(
-                            {conversationItem.formatted.tool.arguments})
-                          </div>
-                        )}
                         {!conversationItem.formatted.tool &&
                           conversationItem.role === 'user' && (
                             <div>
@@ -373,12 +369,6 @@ ${scrapedContent}
                                 '(truncated)'}
                             </div>
                           )}
-                        {conversationItem.formatted.file && (
-                          <audio
-                            src={conversationItem.formatted.file.url}
-                            controls
-                          />
-                        )}
                       </div>
                     </div>
                   );
